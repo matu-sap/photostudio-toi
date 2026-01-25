@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Wedding | PHOTO STUDIO TOI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    :root {
+      --bg: #f6efe6;
+      --card: #ffffff;
+      --text-main: #3f3328;
+      --accent: #b5835a;
+      --border: #e3d5c5;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ヘッダー */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(246,239,230,0.96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(6px);
+    }
+
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 20px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+    }
+
+    nav li a {
+      padding-bottom: 3px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav li a:hover,
+    nav li a.is-current {
+      border-bottom-color: var(--accent);
+    }
+
+    /* メイン */
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 28px 20px 40px;
+    }
+
+    .page-title {
+      font-size: 24px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .page-sub {
+      font-size: 13px;
+      color: #7b6a57;
+      margin-bottom: 22px;
+    }
+
+    .lead-block {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 20px 18px 22px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+      margin-bottom: 26px;
+      font-size: 14px;
+    }
+
+    .lead-block h2 {
+      font-size: 18px;
+      margin: 0 0 8px;
+    }
+
+    .lead-block p {
+      margin: 0 0 6px;
+    }
+
+    /* セクション */
+    .section-block {
+      margin-bottom: 32px;
+    }
+
+    .section-heading-en {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #a18464;
+      margin-bottom: 2px;
+    }
+
+    .section-heading-ja {
+      font-size: 18px;
+      margin: 0 0 8px;
+    }
+
+    .section-text {
+      font-size: 14px;
+      color: #6e5c4a;
+      margin-bottom: 14px;
+    }
+
+    /* 画像グリッド：オークラ風にシンプル */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .photo-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #ddd;
+      aspect-ratio: 4 / 3;
+    }
+
+    .photo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-label {
+      position: absolute;
+      left: 8px;
+      bottom: 6px;
+      padding: 3px 8px;
+      font-size: 11px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.55);
+      color: #fff;
+    }
+
+    .note {
+      font-size: 11px;
+      color: #8b7a68;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      nav ul {
+        flex-wrap: wrap;
+        gap: 10px;
+        font-size: 12px;
+      }
+      .photo-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 520px) {
+      .photo-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="nav-inner">
+    <div class="brand-block">
+      <!-- ロゴ画像はファイル名そのままでOK -->
+      <img src="images/tio_logo_cgt.png" alt="Photo Studio TOI ロゴ" class="brand-logo">
+      <div>
+        <div class="brand-text-main">PHOTO STUDIO TOI</div>
+        <div class="brand-text-sub">HOTEL PHOTO STUDIO / SAPPORO GRAND</div>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html#top">HOME</a></li>
+        <li><a href="index.html#wedding">WEDDING</a></li>
+        <li><a href="index.html#anniv">ANNIVERSARY</a></li>
+        <li><a href="gallery.html">GALLERY</a></li>
+        <li><a href="index.html#studio">STUDIO</a></li>
+        <li><a href="index.html#photographers">PHOTOGRAPHERS</a></li>
+        <li><a href="index.html#price">PRICE</a></li>
+        <li><a href="index.html#contact">CONTACT</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<main>
+  <h1 class="page-title">WEDDING</h1>
+  <p class="page-sub">
+    挙式・披露宴当日の様子を、一日を通して丁寧に撮影いたします。<br>
+    館内ロケーションや前撮り撮影についてもご相談ください。
+  </p>
+
+  <!-- リードテキストブロック（オークラの文章構成イメージ） -->
+  <div class="lead-block">
+    <h2>Wedding Photo / ウェディングフォト</h2>
+    <p>
+      挙式前のご支度の様子から、ロビー・チャペルでのポーズ写真、披露宴中のスナップまで。<br>
+      おふたりに一日寄り添いながら、自然な表情と大切なシーンを逃さず撮影していきます。
+    </p>
+    <p>
+      別日を設けてゆっくり撮影する前撮りや、フォトウェディングとしてのご利用も可能です。<br>
+      撮影のご希望やイメージがあれば、どうぞ遠慮なくお聞かせください。
+    </p>
+  </div>
+
+  <!-- セクション1：挙式・披露宴の一日 -->
+  <section class="section-block">
+    <div class="section-heading-en">CEREMONY & RECEPTION</div>
+    <h2 class="section-heading-ja">挙式・披露宴の一日を通して</h2>
+    <p class="section-text">
+      ご家族との時間や、ご友人との笑顔あふれる瞬間。<br>
+      移動中のふとした表情や、扉の向こうで深呼吸をする姿など、<br>
+      後から見返したときに、当日の空気まで思い出せる写真を心がけています。
+    </p>
+
+    <div class="photo-grid">
+      <!-- ▼ ここを実際のファイル名に合わせて変更してください -->
+      <div class="photo-item">
+        <img src="images/WD4.jpeg" alt="窓辺の新婦ポートレート">
+        <span class="photo-label">Portrait</span>
+      </div>
+      <div class="photo-item">
+        <img src="images/WD2.jpeg" alt="ブーケとドレスのディテール">
+        <span class="photo-label">Bouquet</span>
+      </div>
+      <div class="photo-item">
+        <img src="images/WD1.jpeg" alt="指輪の交換シーン">
+        <span class="photo-label">Ring</

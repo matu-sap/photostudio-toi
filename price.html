@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Price | PHOTO STUDIO TOI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    :root {
+      --bg: #f5eee3;
+      --bg-soft: #f9f3ea;
+      --accent: #7a5b3b;
+      --accent-deep: #5b4330;
+      --text: #44352a;
+      --border-soft: #e1d4c5;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ヘッダー共通 */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(245, 238, 227, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-block {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      height: 40px;
+    }
+
+    .brand-text-main {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 18px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .brand-text-sub {
+      font-size: 11px;
+      color: #8b7660;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 18px;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    nav li a {
+      padding-bottom: 4px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav li a:hover {
+      border-bottom-color: var(--accent);
+    }
+
+    /* メインレイアウト */
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 28px 20px 44px;
+    }
+
+    .page-title {
+      font-size: 22px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .page-sub {
+      font-size: 13px;
+      color: #7b6a57;
+      margin-bottom: 22px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      border-left: 3px solid var(--accent);
+      padding-left: 8px;
+      margin: 0 0 12px;
+    }
+
+    .section-lead {
+      font-size: 14px;
+      color: #6c5a4a;
+      margin-bottom: 18px;
+    }
+
+    .price-box {
+      background: #fff;
+      border-radius: 16px;
+      padding: 18px 16px 20px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+      font-size: 13px;
+    }
+
+    .price-row {
+      padding: 6px 0;
+      border-bottom: 1px dashed #e0d4c7;
+    }
+
+    .price-row:last-child {
+      border-bottom: none;
+    }
+
+    .price-row strong {
+      display: inline-block;
+      min-width: 210px;
+    }
+
+    .price-note {
+      font-size: 11px;
+      color: #8a7a6a;
+      margin-top: 10px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border-soft);
+      background: #f2ebe2;
+      font-size: 11px;
+      color: #9a8670;
+      text-align: center;
+      padding: 14px 10px 18px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        gap: 10px;
+        font-size: 12px;
+      }
+
+      .price-row strong {
+        display: block;
+        min-width: auto;
+        margin-bottom: 2px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="brand-block">
+      <img src="images/tio_logo_cgt.png" alt="Photo Studio TOI ロゴ" class="brand-logo">
+      <div>
+        <div class="brand-text-main">PHOTO STUDIO TOI</div>
+        <div class="brand-text-sub">HOTEL PHOTO STUDIO / SAPPORO GRAND</div>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html#top">HOME</a></li>
+        <li><a href="index.html#wedding">WEDDING</a></li>
+        <li><a href="index.html#anniv">ANNIVERSARY</a></li>
+        <li><a href="gallery.html">GALLERY</a></li>
+        <li><a href="index.html#studio">STUDIO</a></li>
+        <li><a href="index.html#photographers">PHOTOGRAPHERS</a></li>
+        <li><a href="index.html#price">PRICE</a></li>
+        <li><a href="index.html#contact">CONTACT</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <h1 class="page-title">PRICE</h1>
+  <p class="page-sub">
+    撮影内容やアルバム仕様により料金が変わります。<br>
+    下記は目安となりますので、詳しくはお問い合わせください。
+  </p>
+
+  <section>
+    <h2 class="section-title">撮影料金の目安</h2>
+    <p class="section-lead">
+      実際の金額は、ホテル様・写真室の方針に合わせて調整ください。<br>
+      ここではサンプルとして、編集しやすい形で表記しています。
+    </p>
+
+    <div class="price-box">
+      <div class="price-row">
+        <strong>ウェディングスナップアルバムプラン</strong>
+        …… ￥◯◯,◯◯◯〜（挙式〜披露宴／アルバム◯ページ仕上げ）
+      </div>
+      <div class="price-row">
+        <strong>前撮り・後撮りプラン</strong>
+        …… ￥◯◯,◯◯◯〜（洋装・和装／スタジオ or ロケーション）
+      </div>
+      <div class="price-row">
+        <strong>スタジオポートレート（お一人様）</strong>
+        …… ￥◯,◯◯◯〜（六つ切り or 四つ切り台紙仕上げ）
+      </div>
+      <div class="price-row">
+        <strong>ご家族写真・記念写真</strong>
+        …… ￥◯,◯◯◯〜（ご家族〜三世代まで）
+      </div>
+      <div class="price-row">
+        <strong>集合写真（ひな壇使用／プリント◯枚込）</strong>
+        …… ￥◯,◯◯◯〜（最大約80名まで対応）
+      </div>
+      <div class="price-note">
+        ・プリントサイズ、台紙仕上げ、データお渡しの有無などで料金が変わります。<br>
+        ・挙式・披露宴とセットでのご注文の場合、別途セット価格もご提案可能です。<br>
+        ・詳しい料金表は店頭、またはお問い合わせ時にご案内いたします。
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  &copy; Photo Studio TOI. All Rights Reserved.
+</footer>
+
+</body>
+</html>

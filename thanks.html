@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Photo Studio TOI | ホテル写真室のウェディング & 記念写真</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    /* ベース */
+    :root {
+      --bg: #f5eee3;
+      --bg-soft: #f9f3ea;
+      --accent: #7a5b3b;
+      --accent-deep: #5b4330;
+      --text: #44352a;
+      --border-soft: #e1d4c5;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ヘッダー */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(245, 238, 227, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-block {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      height: 40px;
+    }
+
+    .brand-text-main {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 18px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .brand-text-sub {
+      font-size: 11px;
+      color: #8b7660;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 18px;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    nav li a {
+      padding-bottom: 4px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav li a:hover {
+      border-bottom-color: var(--accent);
+    }
+
+    /* ヒーロー */
+    .hero {
+      background: radial-gradient(circle at top left, #fff4e5, var(--bg-soft));
+      padding: 48px 20px 40px;
+    }
+
+    .hero-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      padding: 4px 10px;
+      background: rgba(255,255,255,0.85);
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-size: clamp(26px, 3vw + 10px, 34px);
+      font-weight: 600;
+      margin: 6px 0 14px;
+    }
+
+    .hero-lead {
+      font-size: 14px;
+      color: #6c5a4a;
+      margin-bottom: 18px;
+    }
+
+    .hero-note {
+      font-size: 12px;
+      color: #8a7a6a;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0 8px;
+    }
+
+    .btn-main {
+      border-radius: 999px;
+      border: none;
+      background: var(--accent-deep);
+      color: #fff;
+      padding: 10px 22px;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+    }
+
+    .btn-ghost {
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      background: transparent;
+      color: var(--accent-deep);
+      padding: 10px 20px;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+    }
+
+    .hero-image-frame {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 26px 50px rgba(0,0,0,0.16);
+      background: #000;
+      aspect-ratio: 3 / 2;
+    }
+
+    .hero-image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1.03);
+    }
+
+    .hero-tag {
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      padding: 6px 12px;
+      font-size: 11px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.55);
+      color: #fff;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* 共通レイアウト */
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 28px 20px 44px;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+section[id] {
+  scroll-margin-top: 80px; /* ← 数字で表示位置を調整できます */
+}
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #a08c76;
+      margin-bottom: 4px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      border-left: 3px solid var(--accent);
+      padding-left: 8px;
+      margin: 0 0 10px;
+    }
+
+    .section-lead {
+      font-size: 14px;
+      color: #6c5a4a;
+      margin-bottom: 18px;
+    }
+
+    .cols-2 {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    /* カード・ギャラリー */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.04);
+      font-size: 13px;
+    }
+
+    .card h3 {
+      margin: 0 0 6px;
+      font-size: 15px;
+    }
+
+    .thumb {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      aspect-ratio: 3 / 2;
+      background: #d7cec4;
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .thumb-badge {
+      position: absolute;
+      left: 8px;
+      bottom: 8px;
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.55);
+      color: #fff;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* スタジオ紹介 */
+    .studio-photo {
+      border-radius: 16px;
+      overflow: hidden;
+      background: #d9d0c6;
+      aspect-ratio: 3 / 2;
+      box-shadow: 0 14px 28px rgba(0,0,0,0.08);
+    }
+
+    .studio-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* アクセス・コンタクト */
+    .contact-box {
+      background: #fff;
+      border-radius: 14px;
+      padding: 18px 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+      font-size: 13px;
+    }
+
+    .contact-row {
+      margin-bottom: 8px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border-soft);
+      background: #f2ebe2;
+      font-size: 11px;
+      color: #9a8670;
+      text-align: center;
+      padding: 14px 10px 18px;
+    }
+
+   
+    .home-gallery-title {
+      font-size: 19px;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+
+    .home-gallery-lead {
+      font-size: 13px;
+      color: #7b6a57;
+      margin-bottom: 14px;
+    }
+
+    .home-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .home-gallery-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #ddd;
+      aspect-ratio: 4 / 3;
+    }
+
+    .home-gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .home-gallery-label {
+      position: absolute;
+      left: 8px;
+      bottom: 6px;
+      padding: 3px 8px;
+      font-size: 11px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.55);
+      color: #fff;
+    }
+
+    /* スマホ */
+    @media (max-width: 768px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        gap: 10px;
+        font-size: 12px;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 26px;
+      }
+
+      .cols-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .home-gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .home-gallery-grid {
+        grid-template-columns: 1fr;
+      }
+/* Googleマップ表示の装飾 */
+.map-wrap{
+  margin-top:18px;
+  overflow:hidden;
+  border-radius:16px;
+  box-shadow:0 12px 30px rgba(0,0,0,.12);
+}
+    }
+    .btn{
+  display:inline-block;
+  padding:12px 18px;
+  border-radius:999px;
+  text-decoration:none;
+  border:1px solid rgba(0,0,0,.12);
+  background:#fff;
+  font-weight:700;
+}
+.btn.primary{
+  background:#111827;
+  color:#fff;
+  border-color:transparent;
+}
+
+  </style>
+
+</head>
+<body>
+  <main class="container section">
+    <h1 class="page-title">送信完了</h1>
+    <p class="lead">お問い合わせありがとうございます。内容を確認のうえ、ご連絡いたします。</p>
+    <a class="btn" href="index.html">トップへ戻る</a>
+  </main>
+</body>
+</html>

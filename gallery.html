@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Gallery | PHOTO STUDIO TOI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+:root {
+  --bg: #f6efe6;
+  --card: #ffffff;
+  --text-main: #3f3328;
+  --accent: #b5835a;
+  --border: #e3d5c5;
+}
+/* ===== Senior Portrait（切らない） ===== */
+[data-sub-panel="senior"] .thumb-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+[data-sub-panel="senior"] .thumb-item.senior{
+  height: 280px;
+  background: #f3eee7;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+[data-sub-panel="senior"] .thumb-item.senior img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+/* ===================================== */
+/* ===== Location（出張撮影）は人を切らない ===== */
+[data-main-panel="location"] .thumb-item {
+  aspect-ratio: auto;
+  height: 260px;           /* 枠の高さを揃える */
+  background: #f3eee7;     /* 余白用 */
+}
+
+[data-main-panel="location"] .thumb-item img {
+  object-fit: contain;     /* ← 切らない */
+  background: #f3eee7;
+}
+
+/* ===== Location：2枚のときは2列にして余白を消す ===== */
+[data-main-panel="location"] .thumb-grid{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* 共通ヘッダー（index / price と揃えた版） */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(246,239,230,0.96);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-block {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      height: 40px;
+    }
+
+    .brand-text-main {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 18px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .brand-text-sub {
+      font-size: 11px;
+      color: #8b7660;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 18px;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    nav li a {
+      padding-bottom: 3px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav li a:hover,
+    nav li a.is-current {
+      border-bottom-color: var(--accent);
+    }
+
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 28px 20px 40px;
+    }
+
+    .page-title {
+      font-size: 24px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .page-sub {
+      font-size: 13px;
+      color: #7b6a57;
+      margin-bottom: 22px;
+    }
+
+    .section-card {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 20px 18px 24px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+    }
+
+    /* メインタブ（wedding / anniv / studio / idphoto / location） */
+    .tab-main-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+
+    .tab-btn-main {
+      padding: 7px 16px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 13px;
+      background: transparent;
+      color: #776555;
+      cursor: pointer;
+    }
+
+    .tab-btn-main.is-active {
+      background: #f0e1cf;
+      border-color: #d6bda1;
+      color: #3c2f24;
+    }
+
+    /* Anniversary内のサブタブ */
+    .tab-sub-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .tab-btn-sub {
+      padding: 5px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 12px;
+      background: #faf5ef;
+      color: #7b6a57;
+      cursor: pointer;
+    }
+
+    .tab-btn-sub.is-active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .thumb-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .thumb-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #ddd;
+      aspect-ratio: 4 / 3;
+    }
+
+    .thumb-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .thumb-label {
+      position: absolute;
+      left: 8px;
+      bottom: 6px;
+      padding: 3px 8px;
+      font-size: 11px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.55);
+      color: #fff;
+    }
+
+    .note {
+      font-size: 11px;
+      color: #8b7a68;
+      margin-top: 12px;
+    }
+
+    .gallery-lead {
+      font-size: 13px;
+      color: #6c5a4a;
+      margin-bottom: 16px;
+    }
+
+    .is-hidden {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        gap: 10px;
+        font-size: 12px;
+      }
+
+      .thumb-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 520px) {
+      .thumb-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* --- Wedding ギャラリー用 --- */
+
+    .wedding-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+
+    .wedding-hero-main {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+    }
+
+    .wedding-hero-main img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .wedding-hero-text h3 {
+      font-size: 20px;
+      margin: 0 0 10px;
+    }
+
+    .wedding-hero-text p {
+      font-size: 14px;
+      color: #666;
+      margin: 0 0 8px;
+    }
+
+    .wedding-hero-text ul {
+      margin: 8px 0 0;
+      padding-left: 18px;
+      font-size: 13px;
+      color: #666;
+    }
+
+    .wedding-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .wedding-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #ddd;
+      aspect-ratio: 4 / 3;
+    }
+
+    .wedding-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .wedding-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.55), transparent);
+      display: flex;
+      align-items: flex-end;
+      padding: 10px;
+      color: #fff;
+      font-size: 12px;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .wedding-card:hover .wedding-card-overlay {
+      opacity: 1;
+    }
+
+    .wedding-card-title {
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    /* スマホ */
+    @media (max-width: 768px) {
+      .wedding-hero {
+        grid-template-columns: 1fr;
+      }
+
+      .wedding-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    /* ===== ID Photo：見た目優先で揃える（確定版） ===== */
+[data-main-panel="idphoto"] .thumb-item {
+  aspect-ratio: 4 / 3; /* 他と揃える */
+}
+
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="nav-inner">
+    <div class="brand-block">
+      <img src="images/tio_logo_cgt.png" alt="Photo Studio TOI ロゴ" class="brand-logo">
+      <div>
+        <div class="brand-text-main">PHOTO STUDIO TOI</div>
+        <div class="brand-text-sub">HOTEL PHOTO STUDIO / SAPPORO GRAND HOTEL</div>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html#top">HOME</a></li>
+        <li><a href="index.html#wedding">WEDDING</a></li>
+        <li><a href="index.html#anniv">ANNIVERSARY</a></li>
+
+        <!-- 今いるページなので is-current -->
+        <li><a href="gallery.html" class="is-current">GALLERY</a></li>
+
+        <li><a href="index.html#studio">STUDIO</a></li>
+        <li><a href="index.html#photographers">PHOTOGRAPHERS</a></li>
+        <li><a href="index.html#price">PRICE</a></li>
+        <li><a href="index.html#contact">CONTACT</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <h1 class="page-title">GALLERY</h1>
+  <p class="page-sub">
+    ウェディング・アニバーサリー・スタジオ撮影の一部をご紹介します。<br>
+    実際のアルバム構成やカット数は、お客様のご要望にあわせてご提案いたします。
+  </p>
+
+  <div class="section-card">
+    <!-- メインタブ -->
+    <div class="tab-main-row">
+  <button class="tab-btn-main is-active" data-main-tab="wedding">Wedding</button>
+  <button class="tab-btn-main" data-main-tab="anniv">Anniversary</button>
+  <button class="tab-btn-main" data-main-tab="studio">Studio</button>
+  <button class="tab-btn-main" data-main-tab="idphoto">証明写真 / ID Photo</button>
+  <button class="tab-btn-main" data-main-tab="location">出張撮影・集合写真 / Location・Group</button>
+</div>
+
+
+    <!-- Weddingパネル -->
+    <div id="wedding" data-main-panel="wedding">
+      <!-- 上段：メイン写真＋テキスト -->
+      <div class="wedding-hero">
+        <div class="wedding-hero-main">
+          <img src="images/WD1.jpeg" alt="新郎新婦のポートレート">
+        </div>
+        <div class="wedding-hero-text">
+          <h3>Wedding Photography</h3>
+          <p>
+            ホテル館内での挙式・披露宴を中心に、前撮り・後撮りや
+            ロケーション撮影にも対応しています。
+          </p>
+          <p>
+            お二人らしさと会場の雰囲気を大切に、丁寧に撮影いたします。
+          </p>
+          <ul>
+            <li>挙式スナップ・披露宴スナップ</li>
+            <li>新郎新婦ポートレート・ご家族写真</li>
+            <li>前撮り・後撮り・ロケーション撮影</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 下段：9枚グリッド -->
+      <div class="wedding-grid">
+        <div class="wedding-card">
+          <img src="images/WD14.jpeg" alt="チャペルでの挙式シーン">
+          <div class="wedding-card-overlay">
+            <div class="wedding-card-title">挙式のワンシーン</div>
+          </div>
+        </div>
+
+        <div class="wedding-card">
+          <img src="images/WD11.jpeg" alt="指輪交換のシーン">
+          <div class="wedding-card-overlay">
+            <div class="wedding-card-title">指輪交換</div>
+          </div>
+        </div>
+
+        <div class="wedding-card">
+          <img src="images/WD3.jpeg" alt="和装でのロケーションフォト">
+          <div class="wedding-card-overlay">
+            <div class="wedding-card-title">和装ロケーション</div>
+          </div>
+        </div>
+
+        <div class="wedding-card">
+          <img src="images/WD5.jpeg" alt="ブーケのアップ">
+          <div class="wedding-card-overlay">
+            <div class="wedding-card-title">ブーケ & ディテール</div>
+          </div>
+        </div>
+
+        <div class="wedding-card">
+          <img src="images/WD8.jpeg" alt="ベール姿の花嫁">
+          <div class="wedding-card-overlay">
+            <div class="wedding-card-title">花嫁ポートレート</div>
+          </div>
+        </div>
+
+        <div class="wedding-card">
+          <img src="images/WD9.jpeg" alt="夕景のシルエット">
+          <div class="wedding-card-overlay">
+            <div class="wedding-card-title">サンセットシルエット</div>
+          </div>
+        </div>
+
+        <div class="wedding-card">
+          <img src="images/WD12.jpeg" alt="寄り添う新郎新婦">
+          <div class="wedding-card-overlay">
+            <div class="wedding-card-title">ふたりの時間</div>
+          </div>
+        </div>
+
+        <div class="wedding-card">
+          <img src="images/WD15.jpeg" alt="紅葉の中の新郎新婦">
+          <div class="wedding-card-overlay">
+            <div class="wedding-card-title">季節のロケーション</div>
+          </div>
+        </div>
+
+        <div class="wedding-card">
+          <img src="images/WD7.jpeg" alt="新郎新婦の笑顔">
+          <div class="wedding-card-overlay">
+            <div class="wedding-card-title">幸せな笑顔</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="note">
+        ※挙式・披露宴のスナップ撮影、前撮り・ロケーション撮影など、
+        プランにより内容が異なります。
+      </p>
+    </div>
+
+    <!-- Anniversaryパネル -->
+<div id="anniv" data-main-panel="anniv" class="is-hidden">
+  <p class="gallery-lead">
+    七五三や成人式、入学・卒業、家族写真など。<br>
+    人生の節目の「今この瞬間」を、落ち着いた雰囲気の中で丁寧に残します。
+  </p>
+
+  <!-- サブタブ（★annivの中に入れる） -->
+  <div class="tab-sub-row">
+    <button class="tab-btn-sub is-active" data-sub-tab="753">七五三</button>
+    <button class="tab-btn-sub" data-sub-tab="seijin">成人式</button>
+    <button class="tab-btn-sub" data-sub-tab="school">入学・卒業</button>
+    <button class="tab-btn-sub" data-sub-tab="family">家族写真</button>
+    <button class="tab-btn-sub" data-sub-tab="senior">シニアポートレート / Senior Portrait</button>
+  </div>
+
+  <!-- 七五三 -->
+  <div data-sub-panel="753">
+    <div class="thumb-grid">
+      <div class="thumb-item">
+        <img src="images/FA1-2.jpeg" alt="七五三フォト1">
+        <span class="thumb-label">七五三／3歳・5歳・7歳</span>
+      </div>
+      <div class="thumb-item">
+        <img src="images/FA1-4.jpeg" alt="七五三フォト2">
+        <span class="thumb-label">ご兄弟・ご家族とご一緒に</span>
+      </div>
+    </div>
+    <p class="note">
+      衣裳・着付け・ヘアメイクとのセットプランもご用意しております。詳しくはお問い合わせください。
+    </p>
+  </div>
+
+  <!-- 成人式 -->
+  <div data-sub-panel="seijin" class="is-hidden">
+    <div class="thumb-grid">
+      <div class="thumb-item">
+        <img src="images/FA4.jpeg" alt="成人式フォト1">
+        <span class="thumb-label">スタジオポートレート</span>
+      </div>
+      <div class="thumb-item">
+        <img src="images/FA4-1.jpeg" alt="成人式フォト2">
+        <span class="thumb-label">ロケーション撮影</span>
+      </div>
+    </div>
+    <p class="note">
+      前撮り・後撮りどちらも承っております。振袖のお持込み撮影もお気軽にご相談ください。
+    </p>
+  </div>
+
+  <!-- 入学・卒業 -->
+  <div data-sub-panel="school" class="is-hidden">
+    <div class="thumb-grid">
+      <div class="thumb-item">
+        <img src="images/FA8.jpeg" alt="卒業写真">
+        <span class="thumb-label">卒業記念</span>
+      </div>
+      <div class="thumb-item">
+        <img src="images/FA7.jpeg" alt="入学写真">
+        <span class="thumb-label">入学記念・ランドセル姿</span>
+      </div>
+    </div>
+    <p class="note">
+      お一人写しはもちろん、ご家族・ごきょうだいとの撮影も承っております。
+    </p>
+  </div>
+
+  <!-- 家族写真 -->
+  <div data-sub-panel="family" class="is-hidden">
+    <div class="thumb-grid">
+      <div class="thumb-item">
+        <img src="images/FA3.jpeg" alt="家族写真1">
+        <span class="thumb-label">ご家族写真</span>
+      </div>
+      <div class="thumb-item">
+        <img src="images/FA10.jpeg" alt="家族写真2">
+        <span class="thumb-label">記念日の一枚に</span>
+      </div>
+    </div>
+    <p class="note">
+      結婚記念日・お誕生日・ご長寿祝いなど、特別な日のご家族写真にご利用いただいております。
+    </p>
+  </div>
+
+  <!-- シニアポートレート -->
+  <div data-sub-panel="senior" class="is-hidden">
+    <p class="gallery-lead">
+      これまでの歩みを、自然な表情で丁寧に残すシニアポートレート。<br>
+      落ち着いた雰囲気の中で、その方らしさを大切に撮影します。
+    </p>
+
+    <div class="thumb-grid">
+      <div class="thumb-item senior">
+        <img src="images/SR1.jpeg" alt="シニアポートレート">
+        <span class="thumb-label">シニアポートレート</span>
+      </div>
+      <div class="thumb-item senior">
+        <img src="images/SR2.jpeg" alt="大人の記念写真">
+        <span class="thumb-label">大人の記念写真</span>
+      </div>
+    </div>
+
+   
+  </div>
+</div> <!-- ★ Anniversaryパネルをここで閉じる -->
+
+
+    <!-- 証明写真 / ID Photo パネル -->
+<div data-main-panel="idphoto" class="is-hidden">
+  <p class="gallery-lead">
+    マイナンバーカード、履歴書、免許証、各種申請用の証明写真に対応します。<br>
+    <strong>各種規格に準拠した撮影で、安心してご利用いただけます。</strong><br>
+    
+  </p>
+
+  <div class="thumb-grid">
+    <div class="thumb-item">
+      <img src="images/ID1.jpeg" alt="証明写真（就活・転職）">
+      <span class="thumb-label">就活・転職用</span>
+    </div>
+
+    <div class="thumb-item">
+      <img src="images/ID10.png" alt="証明写真（各種申請・免許）">
+      <span class="thumb-label">マイナンバー申請</span>
+    </div>
+
+    <div class="thumb-item">
+      <img src="images/ID3.jpeg" alt="証明写真（各種申請・免許）">
+      <span class="thumb-label">免許証・各種身分証</span>
+    </div>
+  </div>
+
+  <p class="note">
+    ※用途や規格によりサイズ・仕上げが異なります。詳しくはお問い合わせください。
+  </p>
+</div>
+
+<!-- 出張撮影 / Location パネル -->
+<div data-main-panel="location" class="is-hidden">
+  <p class="gallery-lead">
+    企業・団体の記念イベント、式典、会合などの撮影に対応します。<br>
+    <strong>集合写真</strong>は人数や会場に合わせて、スムーズに進行します。<br>
+    事前に撮影の流れも含めてご提案いたします。
+  </p>
+
+  <div class="thumb-grid">
+    <div class="thumb-item">
+      <img src="images/LC11.png" alt="出張撮影（式典・イベント）">
+      <span class="thumb-label">式典・イベント</span>
+    </div>
+
+    <div class="thumb-item">
+      <img src="images/LC2.png" alt="出張撮影（集合写真）">
+      <span class="thumb-label">集合写真</span>
+    </div>
+  </div>
+
+  <p class="note">
+    ※会場・人数により進行や必要時間が異なります。まずは概要をお知らせください。
+  </p>
+</div>
+
+
+    <!-- Studioパネル -->
+    <div id="studio" data-main-panel="studio" class="is-hidden">
+      <p class="gallery-lead">
+        ホテル内にあるゆったりとしたスタジオ空間。<br>
+        ポートレートから大人数の集合写真まで、さまざまなシーンに対応いたします。
+      </p>
+
+      <div class="thumb-grid">
+        <div class="thumb-item">
+          <img src="images/SD1.jpeg" alt="スタジオ内観1">
+          <span class="thumb-label">スタジオ全景</span>
+        </div>
+        <div class="thumb-item">
+          <img src="images/SD2.jpeg" alt="スタジオ内観2">
+          <span class="thumb-label">ライティング設備</span>
+        </div>
+        <div class="thumb-item">
+          <img src="images/SD3.jpeg" alt="ひな壇 80名対応">
+          <span class="thumb-label">最大80名までのひな壇</span>
+        </div>
+      </div>
+
+      <p class="note">
+        常設のひな壇設備により、最大80名までの集合撮影が可能です。<br>
+        社内式典・同窓会・ご親族のお集まりなど、大人数での撮影も安心しておまかせください。
+      </p>
+    </div>
+
+  </div> <!-- section-card の閉じタグ -->
+</main>
+
+<script>
+  // メインタブ切り替え
+  const mainBtns = document.querySelectorAll('.tab-btn-main');
+  const mainPanels = document.querySelectorAll('[data-main-panel]');
+
+  mainBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.mainTab;
+      mainBtns.forEach(b => b.classList.remove('is-active'));
+      mainPanels.forEach(p => p.classList.add('is-hidden'));
+      btn.classList.add('is-active');
+      document
+        .querySelector(`[data-main-panel="${target}"]`)
+        .classList.remove('is-hidden');
+    });
+  });
+
+  // Anniversary内のサブタブ切り替え
+  const subBtns = document.querySelectorAll('.tab-btn-sub');
+  const subPanels = document.querySelectorAll('[data-sub-panel]');
+
+  subBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.subTab;
+      subBtns.forEach(b => b.classList.remove('is-active'));
+      subPanels.forEach(p => p.classList.add('is-hidden'));
+      btn.classList.add('is-active');
+      document
+        .querySelector(`[data-sub-panel="${target}"]`)
+        .classList.remove('is-hidden');
+    });
+    // URLハッシュから初期タブを開く
+  const hash = location.hash.replace('#', '');
+  if (hash) {
+    const targetBtn = document.querySelector(
+      `.tab-btn-main[data-main-tab="${hash}"]`
+    );
+    if (targetBtn) {
+      targetBtn.click();
+    }
+  }
+  });
+</script>
+</body>
+</html>

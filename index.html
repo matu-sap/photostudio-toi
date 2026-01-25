@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Photo Studio TOI | ホテル写真室のウェディング & 記念写真</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    /* ベース */
+    :root {
+      --bg: #f5eee3;
+      --bg-soft: #f9f3ea;
+      --accent: #7a5b3b;
+      --accent-deep: #5b4330;
+      --text: #44352a;
+      --border-soft: #e1d4c5;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ヘッダー */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(245, 238, 227, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-block {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      height: 40px;
+    }
+
+    .brand-text-main {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 18px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .brand-text-sub {
+      font-size: 11px;
+      color: #8b7660;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 18px;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    nav li a {
+      padding-bottom: 4px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav li a:hover {
+      border-bottom-color: var(--accent);
+    }
+
+    /* ヒーロー */
+    .hero {
+      background: radial-gradient(circle at top left, #fff4e5, var(--bg-soft));
+      padding: 48px 20px 40px;
+    }
+
+    .hero-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      padding: 4px 10px;
+      background: rgba(255,255,255,0.85);
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-size: clamp(26px, 3vw + 10px, 34px);
+      font-weight: 600;
+      margin: 6px 0 14px;
+    }
+
+    .hero-lead {
+      font-size: 14px;
+      color: #6c5a4a;
+      margin-bottom: 18px;
+    }
+
+    .hero-note {
+      font-size: 12px;
+      color: #8a7a6a;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0 8px;
+    }
+
+    .btn-main {
+      border-radius: 999px;
+      border: none;
+      background: var(--accent-deep);
+      color: #fff;
+      padding: 10px 22px;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+    }
+
+    .btn-ghost {
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      background: transparent;
+      color: var(--accent-deep);
+      padding: 10px 20px;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+    }
+
+    .hero-image-frame {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 26px 50px rgba(0,0,0,0.16);
+      background: #000;
+      aspect-ratio: 3 / 2;
+    }
+
+    .hero-image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1.03);
+    }
+
+    .hero-tag {
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      padding: 6px 12px;
+      font-size: 11px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.55);
+      color: #fff;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* 共通レイアウト */
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 28px 20px 44px;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+section[id] {
+  scroll-margin-top: 80px; /* ← 数字で表示位置を調整できます */
+}
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #a08c76;
+      margin-bottom: 4px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      border-left: 3px solid var(--accent);
+      padding-left: 8px;
+      margin: 0 0 10px;
+    }
+
+    .section-lead {
+      font-size: 14px;
+      color: #6c5a4a;
+      margin-bottom: 18px;
+    }
+
+    .cols-2 {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    /* カード・ギャラリー */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.04);
+      font-size: 13px;
+    }
+
+    .card h3 {
+      margin: 0 0 6px;
+      font-size: 15px;
+    }
+
+    .thumb {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      aspect-ratio: 3 / 2;
+      background: #d7cec4;
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .thumb-badge {
+      position: absolute;
+      left: 8px;
+      bottom: 8px;
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.55);
+      color: #fff;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* スタジオ紹介 */
+    .studio-photo {
+      border-radius: 16px;
+      overflow: hidden;
+      background: #d9d0c6;
+      aspect-ratio: 3 / 2;
+      box-shadow: 0 14px 28px rgba(0,0,0,0.08);
+    }
+
+    .studio-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* アクセス・コンタクト */
+    .contact-box {
+      background: #fff;
+      border-radius: 14px;
+      padding: 18px 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+      font-size: 13px;
+    }
+
+    .contact-row {
+      margin-bottom: 8px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border-soft);
+      background: #f2ebe2;
+      font-size: 11px;
+      color: #9a8670;
+      text-align: center;
+      padding: 14px 10px 18px;
+    }
+
+   
+    .home-gallery-title {
+      font-size: 19px;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+
+    .home-gallery-lead {
+      font-size: 13px;
+      color: #7b6a57;
+      margin-bottom: 14px;
+    }
+
+    .home-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .home-gallery-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #ddd;
+      aspect-ratio: 4 / 3;
+    }
+
+    .home-gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .home-gallery-label {
+      position: absolute;
+      left: 8px;
+      bottom: 6px;
+      padding: 3px 8px;
+      font-size: 11px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.55);
+      color: #fff;
+    }
+
+    /* スマホ */
+    @media (max-width: 768px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        gap: 10px;
+        font-size: 12px;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 26px;
+      }
+
+      .cols-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .home-gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .home-gallery-grid {
+        grid-template-columns: 1fr;
+      }
+/* Googleマップ表示の装飾 */
+.map-wrap{
+  margin-top:18px;
+  overflow:hidden;
+  border-radius:16px;
+  box-shadow:0 12px 30px rgba(0,0,0,.12);
+}
+    }
+    .btn{
+  display:inline-block;
+  padding:12px 18px;
+  border-radius:999px;
+  text-decoration:none;
+  border:1px solid rgba(0,0,0,.12);
+  background:#fff;
+  font-weight:700;
+}
+.btn.primary{
+  background:#111827;
+  color:#fff;
+  border-color:transparent;
+}
+
+  </style>
+
+</head>
+<body>
+  <!-- ヘッダー -->
+  <header>
+    <div class="nav-inner">
+      <div class="brand-block">
+        <!-- ロゴ画像を使う場合：ファイル名を合わせてください -->
+        <img src="images/tio_logo_cgt.png" alt="Photo Studio TOI ロゴ" class="brand-logo">
+        <div>
+          <div class="brand-text-main">PHOTO STUDIO TOI</div>
+          <div class="brand-text-sub"> SAPPORO GRAND HOTEL(表示変更）</div>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#top">HOME</a></li>
+          <li><a href="#wedding">WEDDING</a></li>
+          <li><a href="#anniv">ANNIVERSARY</a></li>
+          <li><a href="gallery.html">GALLERY</a></li>
+          <li><a href="#studio">STUDIO</a></li>
+          <li><a href="#photographers">PHOTOGRAPHERS</a></li>
+          <li><a href="#price">PRICE</a></li>
+          <li><a href="#contact">CONTACT</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">HOTEL PHOTO STUDIO</div>
+        <h1 class="hero-title">
+          ひとつのホテルに、<br>
+          何十年分もの「想い出」があります。
+        </h1>
+        <p class="hero-lead">
+          フォトスタジオ トイ は、札幌グランドホテルのなかにある写真室です。<br>
+          挙式・披露宴のウェディングフォトはもちろん、七五三や成人式、ご家族写真まで。<br>
+          「人生の節目」を、落ち着いたスタジオで丁寧に残します。
+        </p>
+        <div class="hero-buttons">
+          <button class="btn-main" onclick="location.href='#wedding'">ウェディング撮影を見る</button>
+          <button class="btn-ghost" onclick="location.href='#anniv'">記念写真・ご家族写真</button>
+        </div>
+        <p class="hero-note">
+          ※ご予約制にて承っております。挙式・披露宴のスケジュールに合わせて撮影時間をご提案いたします。
+        </p>
+      </div>
+
+      <!-- HERO右側：ウェディング写真（例：WD4.jpeg） -->
+      <div class="hero-image-frame">
+        <img src="images/WD4.jpeg" alt="ウェディングフォトのイメージ">
+        <div class="hero-tag">Wedding Portrait / Photo Studio TOI</div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <!-- ABOUT / コンセプト -->
+    <section id="about">
+      <div class="section-label">CONCEPT</div>
+      <h2 class="section-title">ホテル写真室として積み重ねてきた「場の記憶」。</h2>
+      <p class="section-lead">
+        式場や披露宴会場をよく知るフォトグラファーが、<br>
+        おふたりやご家族のペースに合わせて撮影を進めます。<br>
+        事前の打ち合わせでは、当日の流れや「どんな雰囲気で残したいか」を丁寧にヒアリング。<br>
+        緊張しがちなフォーマル撮影も、リラックスして臨んでいただけるようサポートいたします。
+      </p>
+       
+    </section>
+      <!-- HOME：ミニギャラリー＆ギャラリーページへの導線 -->
+  <section class="home-gallery-preview">
+    <h2 class="home-gallery-title">Gallery</h2>
+    <p class="home-gallery-lead">
+      ウェディング・アニバーサリー・スタジオ撮影の一部を、ギャラリーページでご覧いただけます。<br>
+    </p>
+
+    <div class="home-gallery-grid">
+  <a href="gallery.html#wedding" class="home-gallery-item">
+    <img src="images/WD01.jpeg" alt="ウェディングフォト">
+    <span class="home-gallery-label">Wedding</span>
+  </a>
+
+  <a href="gallery.html#anniv" class="home-gallery-item">
+    <img src="images/FA1.jpeg" alt="アニバーサリーフォト">
+    <span class="home-gallery-label">Anniversary</span>
+  </a>
+
+  <a href="gallery.html#studio" class="home-gallery-item">
+    <img src="images/SD1.jpeg" alt="スタジオ内観">
+    <span class="home-gallery-label">Studio</span>
+  </a>
+</div>
+
+    <div>
+      <a href="gallery.html" class="btn-ghost">ギャラリーを詳しく見る</a>
+    </div>
+  </section>
+
+
+    <!-- WEDDING ダイジェスト -->
+    <section id="wedding">
+      <div class="section-label">WEDDING</div>
+      <h2 class="section-title">ウェディングフォト</h2>
+      <p class="section-lead">
+        挙式前のロビーやチャペルでのポーズ写真、披露宴中のスナップ、<br>
+        和装でのロケーション撮影など、ホテルを拠点にさまざまな撮影スタイルに対応します。
+      </p>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="thumb">
+            <!-- 例：和装ロケーション（WD3など） -->
+            <img src="images/WD3.jpeg" alt="和装ロケーションの写真">
+            <div class="thumb-badge">JAPANESE STYLE</div>
+          </div>
+          <h3>和装ロケーション</h3>
+          <p>
+            提携会場や近隣の庭園などでのロケーション撮影もご相談ください。<br>
+            雨天時の代替プランも含めてご提案いたします。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="thumb">
+            <!-- 例：ブーケクローズアップ（WD1など） -->
+            <img src="images/WD1.jpeg" alt="ブーケのイメージ写真">
+            <div class="thumb-badge">DETAIL</div>
+          </div>
+          <h3>ドレス & ブーケのディテール</h3>
+          <p>
+            ドレスラインやブーケ、指輪の交換など「手元の表情」も大切に切り取ります。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="thumb">
+            <!-- 例：夕景シルエット（WD9など） -->
+            <img src="images/WD9.jpeg" alt="夕景のシルエット写真">
+            <div class="thumb-badge">SUNSET</div>
+          </div>
+          <h3>夕景・ロマンティックシーン</h3>
+          <p>
+            お時間が合えば、夕景や夜景を背景にしたロマンティックなカットも撮影可能です。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ANNIVERSARY -->
+    <section id="anniv">
+      <div class="section-label">ANNIVERSARY</div>
+      <h2 class="section-title">七五三・成人式・入学・ご家族写真</h2>
+      <p class="section-lead">
+        七五三、成人式、入学・卒業、ご家族の記念撮影まで。<br>
+        「今この瞬間らしさ」が伝わる表情を大切にしています。
+      </p>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="thumb">
+            <img src="images/FA1.jpeg" alt="七五三 男児の写真">
+            <div class="thumb-badge">SHICHIGOSAN</div>
+          </div>
+          <h3>七五三撮影</h3>
+          <p>
+            お着物・ヘアメイクとの連携も含め、お子さまのペースでゆっくり撮影します。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="thumb">
+            <img src="images/FA4.jpeg" alt="七五三 女の子の写真">
+            <div class="thumb-badge">KIMONO</div>
+          </div>
+          <h3>成人式</h3>
+          <p>
+            成人式や卒業式の前撮り・後撮りも承ります。屋内スタジオ・屋外ロケともに対応可能です。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="thumb">
+            <img src="images/FA7.jpeg" alt="入学記念の家族写真">
+            <div class="thumb-badge">FAMILY</div>
+          </div>
+          <h3>ご家族写真・入学・卒業</h3>
+          <p>
+            ランドセル姿の記念写真や、三世代でのファミリーフォトなど、節目ごとの一枚をお撮りします。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STUDIO 紹介 -->
+    <section id="studio">
+      <div class="section-label">STUDIO</div>
+      <h2 class="section-title">広さを生かしたスタジオ & ひな壇撮影</h2>
+
+      <div class="cols-2">
+        <div>
+          <p class="section-lead">
+            写真室には、最大約80名まで対応できる常設ひな壇をご用意しています。<br>
+            企業の周年記念写真や同窓会、親族集合写真など、大人数での撮影にも安心してご利用いただけます。
+          </p>
+          <p class="section-lead">
+            室内のライティングを正確にコントロールし、<br>
+            一人ひとりの表情がきちんと見える、落ち着いた一枚に仕上がります。
+          </p>
+        </div>
+        <div class="studio-photo">
+          <!-- スタジオまたはひな壇の写真 -->
+          <img src="images/SD3.jpeg" alt="ひな壇スタジオのイメージ">
+        </div>
+      </div>
+    </section>
+
+    <!-- PHOTOGRAPHERS 概要（詳しくは別ページへ） -->
+    <section id="photographers">
+      <div class="section-label">PHOTOGRAPHERS</div>
+      <h2 class="section-title">フォトグラファーについて</h2>
+      <p class="section-lead">
+        長年、ホテルでの挙式・披露宴を撮影してきた専属フォトグラファーが担当いたします。<br>
+        お客様のペースに合わせ、自然な表情が残る撮影を心がけてまいります。<br>
+        代表 戸井恭博（北海道・岩内町出身・60歳）
+      </p>
+    </section>
+
+    <!-- PRICE 概要（細かい料金は後から編集しやすく） -->
+    <section id="price">
+      <div class="section-label">PRICE</div>
+      <h2 class="section-title">撮影料金の目安</h2>
+      <p class="section-lead">
+        下記は一例です。実際の料金体系に合わせて、後から自由に書き換えてください。
+      </p>
+      <div class="contact-box">
+        <div class="contact-row">
+          ・ウェディングスナップアルバムプラン …… ￥◯◯,◯◯◯〜（撮影＋アルバム◯ページ）
+        </div>
+        <div class="contact-row">
+          ・スタジオポートレート（お一人様） …… ￥◯,◯◯◯〜
+        </div>
+        <div class="contact-row">
+          ・ご家族写真・記念写真 …… ￥◯,◯◯◯〜
+        </div>
+        <div class="contact-row">
+          ・集合写真（ひな壇使用／◯枚プリント込） …… ￥◯,◯◯◯〜
+        </div>
+        <div class="contact-row">
+          ※プリントサイズや台紙仕上げ、データ納品などの組み合わせはご相談ください。
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT & ACCESS -->
+    <section id="contact">
+      <div class="section-label">CONTACT & ACCESS</div>
+      <h2 class="section-title">ご予約・お問い合わせ</h2>
+      <p class="section-lead">
+        撮影のご予約・空き状況のお問い合わせは、お電話または店頭・メールにて承ります。<br>
+        挙式・披露宴のご予約がお決まりの場合は、会場名とお日にちをお知らせください。
+      </p>
+
+      <div class="contact-box">
+        <div class="contact-row">
+          📞 TEL：011-219-3201（写真室直通）<br>
+          📧 MAIL：gh2019-st@outlook.jp
+
+          <div class="contact-row" style="margin-top:10px;">
+  <a class="btn primary" href="contact.html">フォームでお問い合わせ</a>
+</div>
+
+        </div>
+        <div class="contact-row">
+          受付時間：10:00〜18:00（水曜定休）<br>
+        </div>
+        <div class="contact-row">
+          住所：札幌グランドホテル本館3階 写真室 　【 Photo Studio TOI 】<br>
+          （札幌市中央区北1条西4丁目　札幌駅より徒歩10分）
+        </div>
+        <div class="contact-row">
+          ・ホテル館内のご案内や駐車場のご利用については、ホテル公式サイトもあわせてご覧ください。<br>
+→→→　https://grand1934.com/location/ 
+        </div>
+      </div>
+<!-- 🔻 Google Map 埋め込み（これだけ残せばOK） -->
+<div class="map-wrap">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2914.421650170006!2d141.3483377!3d43.0639839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b29909c57803f%3A0x6e8ea378c88ea182!2z44CSMDYwLTAwMDMg5YyX5rW36YGT5pyt55S677yR5LiB55uu77yR77yV4oiS77yRIOODreODquODg-OCk-ODq-S6ik1GUkFORA!5e0!3m2!1sja!2sjp!4v1701320000000!5m2!1sja!2sjp"
+      width="100%" height="320"
+      style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; Photo Studio TOI. All Rights Reserved.
+  </footer>
+</body>
+</html>
