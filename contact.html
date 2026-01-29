@@ -427,6 +427,42 @@ section[id] {
   color:#fff;
   border-color:transparent;
 }
+/* Contactページ：幅を狭めて中央寄せ（確実に効く） */
+main.contact-page.container{
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* 入力欄を押しやすく・読みやすく */
+.contact-form input,
+.contact-form select,
+.contact-form textarea{
+  width: 50%;
+  font-size: 16px;
+  padding: 10px 12px;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: 10px;
+}
+/* textareaを大きくする（確実に効く） */
+.contact-form textarea{
+  min-height: 180px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ラベルと入力欄を縦に並べる */
+.contact-form label{
+  display: block;
+  margin: 10px 0 6px;
+}
+header .container{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+
 
   </style>
 
@@ -445,10 +481,11 @@ section[id] {
     </div>
   </header>
 
-  <main class="container section">
+  <main class="container section contact-page">
     <h1 class="page-title">Contact</h1>
     <p class="lead">
-      ご相談・お見積り・空き状況の確認など、お気軽にお送りください。原則24時間以内にご返信します。
+      各種お問い合わせに関しては、お電話もしくは以下のフォームからお送りください。
+      <p>※お急ぎの場合には、お手数ですがお電話でのお問い合わせをお願いいたします。　写真室（直通）　<strong>011-219-3201</strong></p>
     </p>
 
     <div class="card form-card">
@@ -458,7 +495,7 @@ section[id] {
         method="POST"
       >
         <!-- スパム対策（botが埋めやすい罠フィールド） -->
-        <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off" />
+        <name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off" />
 
         <div class="grid2">
           <div class="field">
