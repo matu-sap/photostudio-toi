@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Photo Studio TOI | ホテル写真室のウェディング & 記念写真</title>
+  <title>PhotoStudio TOI | ホテル写真室のウェディング & 記念写真</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
     /* ベース */
@@ -220,13 +220,14 @@ section[id] {
       font-size: 20px;
       border-left: 3px solid var(--accent);
       padding-left: 8px;
-      margin: 0 0 10px;
+      margin: 0 0 14px;
     }
 
     .section-lead {
       font-size: 14px;
       color: #6c5a4a;
-      margin-bottom: 18px;
+      line-height: 1.8;
+      margin-bottom: 22px;
     }
 
     .cols-2 {
@@ -309,10 +310,16 @@ section[id] {
       padding: 18px 16px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.04);
       font-size: 13px;
+      .fineprint,
+.contact-box p,
+.contact-box {
+  line-height: 1.75;
+}
+
     }
 
     .contact-row {
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     footer {
@@ -427,6 +434,25 @@ section[id] {
   color:#fff;
   border-color:transparent;
 }
+/* Google Map（PC/スマホ共通で効かせる） */
+.map-wrap{
+  margin-top: 18px;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.12);
+
+  /* ここがポイント：横長固定にする */
+  aspect-ratio: 16 / 9;
+  background: #e9e1d6; /* 読み込み中の見た目 */
+}
+
+.map-wrap iframe{
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
 
   </style>
 
@@ -437,10 +463,11 @@ section[id] {
     <div class="nav-inner">
       <div class="brand-block">
         <!-- ロゴ画像を使う場合：ファイル名を合わせてください -->
-        <img src="images/tio_logo_cgt.png" alt="Photo Studio TOI ロゴ" class="brand-logo">
+        <img src="images/tio_logo_cgt.png" alt="PhotoStudio TOI ロゴ" class="brand-logo">
         <div>
-          <div class="brand-text-main">PHOTO STUDIO TOI</div>
-          <div class="brand-text-sub"> SAPPORO GRAND HOTEL　写真室</div>
+          <div class="brand-text-main">PHOTOSTUDIO TOI</div>
+          <div class="brand-text-sub"> SAPPORO GRAND HOTEL　 写真室</div>
+          <div class="brand-text-sub"> HOTEL　EMISIA SAPPORO　写真室</div>
         </div>
       </div>
       <nav>
@@ -462,22 +489,23 @@ section[id] {
   <section class="hero" id="top">
     <div class="hero-inner">
       <div>
-        <div class="hero-badge">HOTEL PHOTO STUDIO</div>
+        <div class="hero-badge">HOTEL PHOTOSTUDIO</div>
         <h1 class="hero-title">
           ひとつのホテルに、<br>
           何十年分もの「想い出」があります。
         </h1>
         <p class="hero-lead">
-          フォトスタジオ トイ は、札幌グランドホテルのなかにある写真室です。<br>
-          挙式・披露宴のウェディングフォトはもちろん、七五三や成人式、ご家族写真まで。<br>
-          「人生の節目」を、落ち着いたスタジオで丁寧に残します。
+          フォトスタジオ トイ は、ホテルのなかにある写真室です。<br>
+          挙式・披露宴のウェディングフォトはもちろん、七五三や成人式、ご家族の記念写真<br>
+          「人生の節目」を、落ち着いたスタジオで丁寧に残します。<br>
+          そのほか、各種証明写真などの撮影もご対応いたします。
         </p>
         <div class="hero-buttons">
           <button class="btn-main" onclick="location.href='#wedding'">ウェディング撮影を見る</button>
           <button class="btn-ghost" onclick="location.href='#anniv'">記念写真・ご家族写真</button>
         </div>
         <p class="hero-note">
-          ※ご予約制にて承っております。挙式・披露宴のスケジュールに合わせて撮影時間をご提案いたします。
+          ※ご予約制にて承っております。
         </p>
       </div>
 
@@ -492,6 +520,16 @@ section[id] {
   <main>
     <!-- ABOUT / コンセプト -->
     <section id="about">
+      <section class="locations-note">
+  <div class="section-label">LOCATIONS</div>
+  <h2 class="section-title">写真室のご案内</h2>
+  <p class="section-lead">
+    PhotoStudio TOI は、札幌市内の以下2つのホテル内に写真室を運営しています。<br>
+    ・札幌グランドホテル 写真室<br>
+    ・ホテルエミシア札幌 写真室
+  </p>
+</section>
+
       <div class="section-label">CONCEPT</div>
       <h2 class="section-title">ホテル写真室として積み重ねてきた「場の記憶」。</h2>
       <p class="section-lead">
@@ -689,28 +727,26 @@ section[id] {
     <!-- CONTACT & ACCESS -->
     <section id="contact">
       <div class="section-label">CONTACT & ACCESS</div>
-      <h2 class="section-title">ご予約・お問い合わせ</h2>
+      <h2 class="section-title">札幌グランドホテル写真室  ご予約・お問い合わせ</h2>
       <p class="section-lead">
         撮影のご予約・空き状況のお問い合わせは、お電話または店頭・メールにて承ります。<br>
         挙式・披露宴のご予約がお決まりの場合は、会場名とお日にちをお知らせください。
       </p>
 
       <div class="contact-box">
-        <div class="contact-row">
+        【 PhotoStudio TOI 】<br>
           📞 TEL：011-219-3201（写真室直通）<br>
           📧 MAIL：gh2019-st@outlook.jp
 
           <div class="contact-row" style="margin-top:10px;">
   <a class="btn primary" href="contact.html">フォームでお問い合わせ</a>
 </div>
-
-        </div>
         <div class="contact-row">
           受付時間：10:00〜18:00（水曜定休）<br>
         </div>
         <div class="contact-row">
-          住所：札幌グランドホテル本館3階 写真室 　【 Photo Studio TOI 】<br>
-          （札幌市中央区北1条西4丁目　札幌駅より徒歩10分）
+          住所：札幌市中央区北1条西4丁目札幌グランドホテル本館3階 写真室 　<br>
+          （札幌駅より徒歩10分）
         </div>
         <div class="contact-row">
           ・ホテル館内のご案内や駐車場のご利用については、ホテル公式サイトもあわせてご覧ください。<br>
@@ -719,17 +755,54 @@ section[id] {
       </div>
 <!-- 🔻 Google Map 埋め込み（これだけ残せばOK） -->
 <div class="map-wrap">
+  <iframe 
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6932.926118160878!2d141.34516353033055!3d43.06380600879683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b299dce49241d%3A0x39a1eb3fc6da2ee1!2z44Kw44Op44Oz44OJ44Ob44OG44Or5YaZ55yf5a6k55u06YCa!5e0!3m2!1sja!2sjp!4v1770369773236!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+  loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    allowfullscreen>
+    </iframe>
+</div>
+<div class="section-label">CONTACT & ACCESS</div>
+      <h2 class="section-title">ホテルエミシア札幌  ご予約・お問い合わせ</h2>
+      <p class="section-lead">
+        撮影のご予約・空き状況のお問い合わせは、お電話または店頭・メールにて承ります。<br>
+        挙式・披露宴のご予約がお決まりの場合は、会場名とお日にちをお知らせください。
+      </p>
+
+      <div class="contact-box">
+        【 PhotoStudio TOI 】<br>
+          📞 TEL：011-219-3201（写真室直通）<br>
+          📧 MAIL：gh2019-st@outlook.jp
+
+          <div class="contact-row" style="margin-top:10px;">
+  <a class="btn primary" href="contact.html">フォームでお問い合わせ</a>
+</div>
+        <div class="contact-row">
+          受付時間：10:00〜18:00（水曜定休）<br>
+        </div>
+        <div class="contact-row">
+          住所：札幌市厚別区厚別中央2条5丁目5-25 ホテルエミシア札幌 写真室<br>
+          （JR新札幌駅より徒歩約3分）
+        </div>
+        <div class="contact-row">
+          ・ホテル館内のご案内や駐車場のご利用については、ホテル公式サイトもあわせてご覧ください。<br>
+→→→　https://www.hotel-emisia.com/sapporo/ 
+        </div>
+      </div>
+<!-- 🔻 Google Map 埋め込み（これだけ残せばOK） -->
+<div class="map-wrap">
     <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2914.421650170006!2d141.3483377!3d43.0639839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b29909c57803f%3A0x6e8ea378c88ea182!2z44CSMDYwLTAwMDMg5YyX5rW36YGT5pyt55S677yR5LiB55uu77yR77yV4oiS77yRIOODreODquODg-OCk-ODq-S6ik1GUkFORA!5e0!3m2!1sja!2sjp!4v1701320000000!5m2!1sja!2sjp"
-      width="100%" height="320"
-      style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2916.0589107043543!2d141.4707469760781!3d43.040191991862415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b29841f60689d%3A0x4ddab6566f8dcda0!2z44Ob44OG44Or44Ko44Of44K344Ki5pyt5bmM!5e0!3m2!1sja!2sjp!4v1770365969517!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    allowfullscreen>
     </iframe>
 </div>
     </section>
   </main>
 
   <footer>
-    &copy; Photo Studio TOI. All Rights Reserved.
+    &copy; PhotoStudio TOI. All Rights Reserved.
   </footer>
 </body>
 </html>
