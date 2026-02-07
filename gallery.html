@@ -631,7 +631,7 @@
 
 
     <!-- 証明写真 / ID Photo パネル -->
-<div data-main-panel="idphoto" class="is-hidden">
+<div id="idphoto" data-main-panel="idphoto" class="is-hidden">
   <p class="gallery-lead">
     マイナンバーカード、履歴書、免許証、各種申請用の証明写真に対応します。<br>
     <strong>各種規格に準拠した撮影で、安心してご利用いただけます。</strong><br>
@@ -661,7 +661,7 @@
 </div>
 
 <!-- 出張撮影 / Location パネル -->
-<div data-main-panel="location" class="is-hidden">
+<div id="location" data-main-panel="location" class="is-hidden">
   <p class="gallery-lead">
     企業・団体の記念イベント、式典、会合などの撮影に対応します。<br>
     <strong>集合写真</strong>は人数や会場に合わせて、スムーズに進行します。<br>
@@ -762,3 +762,35 @@
 </script>
 </body>
 </html>
+
+<script>
+  // hash（#idphoto / #location / #wedding ...）に応じてメインタブを開く
+  function openMainTab(tabKey) {
+    const btns = document.querySelectorAll('.tab-btn-main');
+    const panels = document.querySelectorAll('[data-main-panel]');
+
+    btns.forEach(b => b.classList.toggle('is-active', b.dataset.mainTab === tabKey));
+    panels.forEach(p => p.classList.toggle('is-hidden', p.dataset.mainPanel !== tabKey));
+  }
+
+  function handleHash() {
+    const key = (location.hash || '').replace('#', '');
+    if (!key) return;
+
+    // ボタンが存在するタブだけ開く（存在しないhashなら何もしない）
+    const exists = document.querySelector(`.tab-btn-main[data-main-tab="${key}"]`);
+    if (exists) {
+      openMainTab(key);
+
+      // スクロール位置も合わせたい場合（id付けた時だけ効く）
+      const target = document.getElementById(key);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  // 初回
+  window.addEventListener('DOMContentLoaded', handleHash);
+  // hashが変わった時（トップから飛んだり、ページ内でURL変えた時）
+  window.addEventListener('hashchange', handleHash);
+</script>
+

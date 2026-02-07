@@ -180,6 +180,46 @@
         margin-bottom: 2px;
       }
     }
+
+    .plan-box{
+  margin-top: 18px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+  font-size: 13px;
+}
+
+.plan-link{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 12px;
+  border: 1px solid #e8dccf;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.plan-link + .plan-link{ margin-top: 10px; }
+
+.plan-link:hover{
+  border-color: var(--accent);
+}
+
+.plan-link .label{
+  font-weight: 600;
+}
+
+.plan-link .sub{
+  font-size: 11px;
+  color: #8a7a6a;
+}
+
+.plan-link .arrow{
+  color: var(--accent);
+  font-weight: 700;
+}
   </style>
 </head>
 <body>
@@ -201,7 +241,7 @@
         <li><a href="gallery.html">GALLERY</a></li>
         <li><a href="index.html#studio">STUDIO</a></li>
         <li><a href="index.html#photographers">PHOTOGRAPHERS</a></li>
-        <li><a href="index.html#price">PRICE</a></li>
+        <li><a href="price.html">PRICE</a></li>
         <li><a href="index.html#contact">CONTACT</a></li>
       </ul>
     </nav>
@@ -219,13 +259,13 @@
     <h2 class="section-title">撮影料金の目安</h2>
     <p class="section-lead">
       実際の金額は、ホテル様・写真室の方針に合わせて調整ください。<br>
-      ここではサンプルとして、編集しやすい形で表記しています。
+      xxxxxxxここではサンプルとして、編集しやすい形で表記しています。
     </p>
 
     <div class="price-box">
       <div class="price-row">
-        <strong>ウェディングスナップアルバムプラン</strong>
-        …… ￥◯◯,◯◯◯〜（挙式〜披露宴／アルバム◯ページ仕上げ）
+        <strong>ウェディングフォト</strong>
+        …… ウェディングデスクを通してお申し込みくださいませ。
       </div>
       <div class="price-row">
         <strong>前撮り・後撮りプラン</strong>
@@ -240,8 +280,16 @@
         …… ￥◯,◯◯◯〜（ご家族〜三世代まで）
       </div>
       <div class="price-row">
-        <strong>集合写真（ひな壇使用／プリント◯枚込）</strong>
+        <strong>スタジオ集合写真（ひな壇使用）</strong>
         …… ￥◯,◯◯◯〜（最大約80名まで対応）
+      </div>
+      <div class="price-row">
+        <strong>証明写真（免許証・マイナンバーほか）</strong>
+        …… ￥◯,◯◯◯〜（修正料含む）
+      </div>
+      <div class="price-row">
+        <strong>出張撮影（移動ひな壇をご準備いたします）</strong>
+        …… ￥◯,◯◯◯〜（出張料を別途承ります）
       </div>
       <div class="price-note">
         ・プリントサイズ、台紙仕上げ、データお渡しの有無などで料金が変わります。<br>
@@ -250,6 +298,31 @@
       </div>
     </div>
   </section>
+  <section style="margin-top:26px;">
+  <h2 class="section-title">季節プラン</h2>
+  <p class="section-lead">
+    成人式・卒業式など、期間限定プランの詳細はフライヤーをご覧ください。
+  </p>
+
+  <div class="plan-box">
+    <a class="plan-link" href="assets/flyers/seijin_2026.jpeg" target="_blank" rel="noopener">
+      <div>
+        <div class="label">〈成人式プラン〉はこちらをご覧ください。</div>
+        <div class="sub">PDFを開きます</div>
+      </div>
+      <div class="arrow">→</div>
+    </a>
+
+    <a class="plan-link" href="assets/flyers/graduation_2026.jpeg" target="_blank" rel="noopener">
+      <div>
+        <div class="label">〈卒業式プラン〉はこちらをご覧ください。</div>
+        <div class="sub">PDFを開きます</div>
+      </div>
+      <div class="arrow">→</div>
+    </a>
+  </div>
+</section>
+
 </main>
 
 <footer>
