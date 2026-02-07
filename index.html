@@ -453,6 +453,73 @@ section[id] {
   display: block;
 }
 
+.hero-lead{
+  font-size: 14px;
+  line-height: 1.9;
+  margin-top: 12px;
+  color: #4b3f34;
+}
+
+.hero-lead + .hero-lead{
+  margin-top: 16px;
+}
+
+.hero-lead-sub{
+  font-size: 14px;
+}
+
+.hero-lead .note{
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #7b6a57;
+}
+
+.hero-lead{
+  font-size: 14px;
+  line-height: 1.9;
+  margin-top: 12px;
+  color: #4b3f34;
+}
+
+/* 通常の段落間 */
+.hero-lead + .hero-lead{
+  margin-top: 16px;
+}
+
+/* Hero内のサブ説明だけは詰める */
+.hero-lead.hero-lead-sub{
+  margin-top: 6px; /* ← ここがポイント */
+}
+.hero-lead.hero-lead-sub{
+  margin-top: 2px;
+}
+
+/* heroの段落のデフォルト余白を一旦ゼロにする（ここが重要） */
+.hero-lead{
+  margin: 0 !important;
+}
+
+/* 2つ目の段落だけ、好みの間隔を付ける */
+.hero-lead + .hero-lead{
+  margin-top: 4px !important;  /* ← ここを 0〜10px で好みに調整 */
+}
+
+/* 注釈は少し控えめに */
+.hero-lead .note{
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 12px;
+  color: #7b6a57;
+}
+
+/* CONCEPT（#about）の本文だけ少し詰める */
+#about .section-lead{
+  line-height: 2.0;         /* ← 1.7〜1.8で好み */
+  margin-top: 10px;          /* ← 見出しとの距離（必要なら） */
+}
+
+
 
   </style>
 
@@ -466,8 +533,8 @@ section[id] {
         <img src="images/tio_logo_cgt.png" alt="PhotoStudio TOI ロゴ" class="brand-logo">
         <div>
           <div class="brand-text-main">PHOTOSTUDIO TOI</div>
-          <div class="brand-text-sub"> SAPPORO GRAND HOTEL　 写真室</div>
-          <div class="brand-text-sub"> HOTEL　EMISIA SAPPORO　写真室</div>
+          <div class="brand-text-sub"> SAPPORO GRAND HOTEL  写真室</div>
+          <div class="brand-text-sub"> HOTEL EMISIA SAPPORO 写真室</div>
         </div>
       </div>
       <nav>
@@ -495,15 +562,25 @@ section[id] {
           ご家族の歩みを一生の宝物に。
         </h1>
         <p class="hero-lead">
-          フォトスタジオ トイは、札幌市内のホテルに拠点を構える写真室です。<br>
-          撮影後は、ホテル内でのご会食やご宿泊もスムーズ。<br>
-          落ち着いた空間で、大切な人との時間そのものを「想い出」にしませんか。<br>
-          （※各種証明写真の撮影も、承っております）
-        </p>
+  フォトスタジオ トイは、札幌市内のホテルに拠点を構える写真室です。
+  撮影後は、ホテル内でのご会食やご宿泊もスムーズにお過ごしいただけます。
+</p>
+
+<p class="hero-lead hero-lead-sub">
+  落ち着いた空間で、大切な人との時間そのものを「想い出」にしませんか。<br>
+  <span class="note">※各種証明写真の撮影も承っております</span>
+</p>
+
+        
         <div class="hero-buttons">
-          <button class="btn-main" onclick="location.href='#wedding'">ウェディング撮影を見る</button>
-          <button class="btn-ghost" onclick="location.href='#anniv'">記念写真・ご家族写真</button>
-        </div>
+  <button class="btn-main" onclick="location.href='gallery.html#wedding'">
+    ウェディング撮影を見る
+  </button>
+  <button class="btn-ghost" onclick="location.href='gallery.html#anniv'">
+    記念写真・ご家族写真
+  </button>
+</div>
+
         <p class="hero-note">
           ※ご予約制にて承っております。
         </p>
@@ -511,93 +588,25 @@ section[id] {
 
       <!-- HERO右側：ウェディング写真（例：WD4.jpeg） -->
       <div class="hero-image-frame">
-        <img src="images/WD4.jpeg" alt="ウェディングフォトのイメージ">
-        <div class="hero-tag">Wedding Portrait / Photo Studio TOI</div>
+        <img src="images/WD00.jpeg" alt="ウェディングフォトのイメージ">
+        <div class="hero-tag">Wedding Portrait / PhotoStudio TOI</div>
       </div>
     </div>
   </section>
 
   <main>
     <!-- ABOUT / コンセプト -->
-    <section id="about">
-      <section class="locations-note">
-  <div class="section-label">LOCATIONS</div>
-  <h2 class="section-title">写真室のご案内</h2>
+<section id="about">
+  <div class="section-label">CONCEPT</div>
+  <h2 class="section-title">ひとつのホテルに、何十年分もの「想い出」があります。</h2>
   <p class="section-lead">
-    PhotoStudio TOI は、札幌市内の以下2つのホテル内に写真室を運営しています。<br>
-    ・札幌グランドホテル 写真室<br>
-    ・ホテルエミシア札幌 写真室
+    時代が変わっても、変わらない場所があること。<br>
+    私たちは、ホテルの歴史とともに、多くのお客様の「人生の節目」に寄り添ってきました。<br>
+    結婚式を挙げた場所で、やがてお子様の七五三を。<br>
+    成人式を祝った場所で、いつかご自身の家族写真を。<br>
+    ホテルの写真室だからこそ叶う、流行に左右されない確かな技術と、<br>
+    ご家族の歴史を何十年先まで見守り続ける安心をお届けします。
   </p>
-</section>
-
-      <div class="section-label">CONCEPT</div>
-      <h2 class="section-title">ひとつのホテルに、何十年分もの「想い出」があります。</h2>
-      <p class="section-lead">
-        時代が変わっても、変わらない場所があること。<br>
-        私たちは、ホテルの歴史とともに、多くのお客様の「人生の節目」に寄り添ってきました。<br>
-        
-        結婚式を挙げた場所で、やがてお子様の七五三を。　成人式を祝った場所で、いつかご自身の家族写真を。<br>
-        <br>
-        ホテルの写真室だからこそ叶う、流行に左右されない確かな技術と、<br>
-        ご家族の歴史を何十年先まで見守り続ける安心をお届けします。
-      </p>
-       
-    </section>
-      <!-- HOME：ミニギャラリー＆ギャラリーページへの導線 -->
-  <section class="home-gallery-preview">
-    <h2 class="home-gallery-title">Gallery</h2>
-    <p class="home-gallery-lead">
-      ウェディング・アニバーサリー・スタジオ撮影の一部を、ギャラリーページでご覧いただけます。<br>
-    </p>
-
-    <div class="home-gallery-grid">
-  <a href="gallery.html#wedding" class="home-gallery-item">
-    <img src="images/WD01.jpeg" alt="ウェディングフォト">
-    <span class="home-gallery-label">Wedding</span>
-  </a>
-
-  <a href="gallery.html#anniv" class="home-gallery-item">
-    <img src="images/FA1-1.jpeg" alt="アニバーサリーフォト">
-    <span class="home-gallery-label">Anniversary</span>
-  </a>
-
-  <a href="gallery.html#studio" class="home-gallery-item">
-    <img src="images/SD1.jpeg" alt="スタジオ内観">
-    <span class="home-gallery-label">Studio</span>
-  </a>
-</div>
-
-    <div>
-      <a href="gallery.html" class="btn-ghost">ギャラリーを詳しく見る</a>
-    </div>
-  </section>
-
-  <section id="services">
-  <div class="section-label">SERVICES</div>
-  <h2 class="section-title">撮影メニュー</h2>
-  <p class="section-lead">目的に合わせて、撮影内容をご案内します。</p>
-
-  <div class="home-gallery-grid">
-    <a href="gallery.html#wedding" class="home-gallery-item">
-      <img src="images/WD01.jpeg" alt="ウェディングフォト">
-      <span class="home-gallery-label">Wedding</span>
-    </a>
-
-    <a href="gallery.html#studio" class="home-gallery-item">
-      <img src="images/ST01.jpeg" alt="スタジオ撮影">
-      <span class="home-gallery-label">Studio</span>
-    </a>
-
-    <a href="gallery.html#idphoto" class="home-gallery-item">
-      <img src="images/ID01.jpeg" alt="証明写真">
-      <span class="home-gallery-label">証明写真 / ID Photo</span>
-    </a>
-
-    <a href="gallery.html#location" class="home-gallery-item">
-      <img src="images/LC11.png" alt="出張撮影・集合写真">
-      <span class="home-gallery-label">出張撮影・集合写真</span>
-    </a>
-  </div>
 </section>
 
 
@@ -650,73 +659,74 @@ section[id] {
       </div>
     </section>
 
-    <!-- ANNIVERSARY -->
-    <section id="anniv">
-      <div class="section-label">ANNIVERSARY</div>
-      <h2 class="section-title">七五三・成人式・入学・ご家族写真</h2>
-      <p class="section-lead">
-        七五三、成人式、入学・卒業、ご家族の記念撮影まで。<br>
-        「今この瞬間らしさ」が伝わる表情を大切にしています。
-      </p>
+      <!-- HOME：ミニギャラリー＆ギャラリーページへの導線 -->
+  <section class="home-gallery-preview">
+    <h2 class="home-gallery-title">Gallery</h2>
+    <p class="home-gallery-lead">
+      ウェディング・アニバーサリー・スタジオ撮影の一部を、ギャラリーページでご覧いただけます。<br>
+    </p>
 
-      <div class="card-grid">
-        <div class="card">
-          <div class="thumb">
-            <img src="images/FA1.jpeg" alt="七五三 男児の写真">
-            <div class="thumb-badge">SHICHIGOSAN</div>
-          </div>
-          <h3>七五三撮影</h3>
-          <p>
-            お着物・ヘアメイクとの連携も含め、お子さまのペースでゆっくり撮影します。
-          </p>
-        </div>
+    <div class="home-gallery-grid">
+  <a href="gallery.html#wedding" class="home-gallery-item">
+    <img src="images/WD01.jpeg" alt="ウェディングフォト">
+    <span class="home-gallery-label">Wedding</span>
+  </a>
 
-        <div class="card">
-          <div class="thumb">
-            <img src="images/FA4.jpeg" alt="七五三 女の子の写真">
-            <div class="thumb-badge">KIMONO</div>
-          </div>
-          <h3>成人式</h3>
-          <p>
-            成人式や卒業式の前撮り・後撮りも承ります。屋内スタジオ・屋外ロケともに対応可能です。
-          </p>
-        </div>
+  <a href="gallery.html#anniv" class="home-gallery-item">
+    <img src="images/FA1-1.jpeg" alt="アニバーサリーフォト">
+    <span class="home-gallery-label">Anniversary</span>
+  </a>
 
-        <div class="card">
-          <div class="thumb">
-            <img src="images/FA7.jpeg" alt="入学記念の家族写真">
-            <div class="thumb-badge">FAMILY</div>
-          </div>
-          <h3>ご家族写真・入学・卒業</h3>
-          <p>
-            ランドセル姿の記念写真や、三世代でのファミリーフォトなど、節目ごとの一枚をお撮りします。
-          </p>
-        </div>
-      </div>
-    </section>
+  <a href="gallery.html#studio" class="home-gallery-item">
+    <img src="images/SD1.jpeg" alt="スタジオ内観">
+    <span class="home-gallery-label">Studio</span>
+  </a>
+</div>
+     
+    <div>
+      <a href="gallery.html" class="btn-ghost">ギャラリーを詳しく見る</a>
+    </div>
+  </section>
 
-    <!-- STUDIO 紹介 -->
-    <section id="studio">
-      <div class="section-label">STUDIO</div>
-      <h2 class="section-title">広さを生かしたスタジオ & ひな壇撮影</h2>
 
-      <div class="cols-2">
-        <div>
-          <p class="section-lead">
-            写真室には、最大約80名まで対応できる常設ひな壇をご用意しています。<br>
-            企業の周年記念写真や同窓会、親族集合写真など、大人数での撮影にも安心してご利用いただけます。
-          </p>
-          <p class="section-lead">
-            室内のライティングを正確にコントロールし、<br>
-            一人ひとりの表情がきちんと見える、落ち着いた一枚に仕上げます。
-          </p>
-        </div>
-        <div class="studio-photo">
-          <!-- スタジオまたはひな壇の写真 -->
-          <img src="images/SD3.jpeg" alt="ひな壇スタジオのイメージ">
-        </div>
-      </div>
-    </section>
+  <!-- HOME：撮影メニューへの導線 -->
+<section id="services">
+  <div class="section-label">SERVICES</div>
+  <h2 class="section-title">撮影メニュー</h2>
+  <p class="section-lead">目的に合わせて、撮影内容をご案内します。</p>
+
+  <div class="home-gallery-grid">
+    <a href="gallery.html#anniv" class="home-gallery-item">
+      <img src="images/FA1.jpeg" alt="七五三フォト">
+      <span class="home-gallery-label">七五三</span>
+    </a>
+
+    <a href="gallery.html#anniv" class="home-gallery-item">
+      <img src="images/FA4.jpeg" alt="成人式フォト">
+      <span class="home-gallery-label">成人式</span>
+    </a>
+
+    <a href="gallery.html#anniv" class="home-gallery-item">
+      <img src="images/FA11.jpeg" alt="入学・卒業フォト">
+      <span class="home-gallery-label">入学・卒業</span>
+    </a>
+
+    <a href="gallery.html#anniv" class="home-gallery-item">
+      <img src="images/FA1-3.jpeg" alt="家族写真フォト">
+      <span class="home-gallery-label">家族写真</span>
+    </a>
+
+    <a href="gallery.html#idphoto" class="home-gallery-item">
+      <img src="images/ID00.jpeg" alt="証明写真">
+      <span class="home-gallery-label">証明写真 / ID Photo</span>
+    </a>
+
+    <a href="gallery.html#location" class="home-gallery-item">
+      <img src="images/LC11.png" alt="出張撮影・集合写真">
+      <span class="home-gallery-label">出張撮影・集合写真</span>
+    </a>
+  </div>
+</section>
 
     <!-- PHOTOGRAPHERS 概要（詳しくは別ページへ） -->
     <section id="photographers">
@@ -731,12 +741,13 @@ section[id] {
 
     <!-- CONTACT & ACCESS -->
     <section id="contact">
-      <div class="section-label">CONTACT & ACCESS</div>
+      <div class="section-label">CONTACT & ACCESS（札幌グランドホテル写真室　/　ホテルエミシア札幌写真室）</div>
       <h2 class="section-title">札幌グランドホテル写真室  ご予約・お問い合わせ</h2>
       <p class="section-lead">
-        撮影のご予約・空き状況のお問い合わせは、お電話または店頭・メールにて承ります。<br>
-        挙式・披露宴のご予約がお決まりの場合は、会場名とお日にちをお知らせください。
+        撮影のご予約・空き状況のお問い合わせは、お電話または店頭・メールにて承ります。
       </p>
+
+      
 
       <div class="contact-box">
         【 PhotoStudio TOI 】<br>
@@ -770,8 +781,7 @@ section[id] {
 <div class="section-label">CONTACT & ACCESS</div>
       <h2 class="section-title">ホテルエミシア札幌写真室  ご予約・お問い合わせ</h2>
       <p class="section-lead">
-        撮影のご予約・空き状況のお問い合わせは、お電話または店頭・メールにて承ります。<br>
-        挙式・披露宴のご予約がお決まりの場合は、会場名とお日にちをお知らせください。
+        撮影のご予約・空き状況のお問い合わせは、お電話または店頭・メールにて承ります。
       </p>
 
       <div class="contact-box">
@@ -794,6 +804,7 @@ section[id] {
 →→→　https://www.hotel-emisia.com/sapporo/ 
         </div>
       </div>
+
 <!-- 🔻 Google Map 埋め込み（これだけ残せばOK） -->
 <div class="map-wrap">
     <iframe 
