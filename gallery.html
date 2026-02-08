@@ -379,6 +379,18 @@
   aspect-ratio: 4 / 3; /* 他と揃える */
 }
 
+/* ===== Senior Portrait：スマホは1列 ===== */
+@media (max-width: 520px) {
+  [data-sub-panel="senior"] .thumb-grid{
+    grid-template-columns: 1fr;
+  }
+
+  [data-sub-panel="senior"] .thumb-item.senior{
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+}
+
 /* --- Senior Portrait：スマホは1列にする --- */
 @media (max-width: 520px) {
   [data-sub-panel="senior"] .thumb-grid{
