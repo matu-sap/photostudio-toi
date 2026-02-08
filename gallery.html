@@ -379,6 +379,24 @@
   aspect-ratio: 4 / 3; /* 他と揃える */
 }
 
+/* --- Senior Portrait：スマホは1列にする --- */
+@media (max-width: 520px) {
+  [data-sub-panel="senior"] .thumb-grid{
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  [data-sub-panel="senior"] .thumb-item.senior{
+    height: auto;          /* 固定高を解除 */
+    aspect-ratio: 4 / 3;   /* 他と揃えるならこれ */
+  }
+
+  [data-sub-panel="senior"] .thumb-item.senior img{
+    height: 100%;
+  }
+}
+
+
   </style>
 </head>
 
@@ -627,7 +645,7 @@
 
    
   </div>
-</div> <!-- ★ Anniversaryパネルをここで閉じる -->
+<!-- ★ Anniversaryパネルをここで閉じる -->
 
 
     <!-- 証明写真 / ID Photo パネル -->
