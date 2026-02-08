@@ -717,7 +717,7 @@
 
 
     <!-- Studioパネル -->
-    <div id="studio" data-main-panel="studio" class="is-hidden">
+    <div id="studio" data-main-panel="studio">
       <p class="gallery-lead">
         ホテル内にあるゆったりとしたスタジオ空間。<br>
         ポートレートから大人数の集合写真まで、さまざまなシーンに対応いたします。
@@ -822,5 +822,20 @@
   window.addEventListener('DOMContentLoaded', handleHash);
   // hashが変わった時（トップから飛んだり、ページ内でURL変えた時）
   window.addEventListener('hashchange', handleHash);
+  // URLハッシュでメインタブを開く
+const hash = location.hash.replace('#', '');
+if (hash) {
+  const targetBtn = document.querySelector(`.tab-btn-main[data-main-tab="${hash}"]`);
+  const targetPanel = document.querySelector(`[data-main-panel="${hash}"]`);
+
+  if (targetBtn && targetPanel) {
+    document.querySelectorAll('.tab-btn-main').forEach(b => b.classList.remove('is-active'));
+    document.querySelectorAll('[data-main-panel]').forEach(p => p.classList.add('is-hidden'));
+
+    targetBtn.classList.add('is-active');
+    targetPanel.classList.remove('is-hidden');
+  }
+}
+
 </script>
 
