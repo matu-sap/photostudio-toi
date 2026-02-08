@@ -325,6 +325,44 @@ main {
   [data-sub-panel="senior"] .thumb-item.senior{ height: auto; aspect-ratio: 4 / 3; }
   [data-sub-panel="senior"] .thumb-item.senior img{ height: 100%; }
 }
+
+.anniv-wrap{
+  display:flex;
+  gap:24px;
+  align-items:flex-start;
+}
+
+.anniv-main{ flex:1; }
+
+.anniv-side{ width:240px; }
+
+.anniv-plan-btn{
+  display:block;
+  padding:16px 14px;
+  border-radius:16px;
+  text-decoration:none;
+  text-align:center;
+  line-height:1.4;
+  background:#faf6f0;
+  border:1px solid rgba(0,0,0,.08);
+  color:#6b4b32;
+  font-size:14px;
+}
+
+.anniv-plan-btn span{
+  display:inline-block;
+  margin-top:6px;
+  font-size:12px;
+  opacity:.85;
+}
+
+.anniv-plan-btn:hover{ opacity:.9; }
+
+/* スマホは邪魔になりやすいので非表示（必要なら“下に回す”に変更可） */
+@media (max-width: 768px){
+  .anniv-side{ display:none; }
+}
+
   </style>
 </head>
 
@@ -444,6 +482,19 @@ main {
         七五三や成人式、入学・卒業、家族写真など。<br>
         人生の節目の「今この瞬間」を、落ち着いた雰囲気の中で丁寧に残します。
       </p>
+
+      <div class="anniv-wrap">
+  <div class="anniv-main">
+    <!-- ここに既存の Anniversary コンテンツ（文章/写真/サブタブ等） -->
+  </div>
+
+  <aside class="anniv-side">
+    <a href="price.html#season-plan" class="anniv-plan-btn">
+      成人式・卒業式プラン<br>
+      <span>（季節プランはこちら）</span>
+    </a>
+  </aside>
+</div>
 
       <div class="tab-sub-row">
         <button class="tab-btn-sub is-active" data-sub-tab="753">七五三</button>
