@@ -165,22 +165,36 @@
       cursor: pointer;
     }
 
-    .hero-image-frame {
-      position: relative;
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 26px 50px rgba(0,0,0,0.16);
-      background: #000;
-      aspect-ratio: 3 / 2;
-    }
+    .hero-image-frame{
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
 
-    .hero-image-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transform: scale(1.03);
-    }
+  /* 背景が黒だと縁に見えやすいので、ページ背景に寄せる */
+  background: #f6efe6;
+
+  /* 影は少しマイルドに（角の縁っぽさが減る） */
+  box-shadow: 0 22px 46px rgba(0,0,0,0.14);
+
+  aspect-ratio: 3 / 2;
+
+  /* 角丸の合成対策（Safari/Chromeで効くこと多い） */
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
+.hero-image-frame img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+
+  /* 背景チラ見え対策 */
+  transform: translateZ(0) scale(1.02);
+  backface-visibility: hidden;
+
+  border: 0;
+  outline: none;
+}
 
     .hero-tag {
       position: absolute;
@@ -589,7 +603,7 @@ section[id] {
 
       <!-- HERO右側：ウェディング写真（例：WD4.jpeg） -->
       <div class="hero-image-frame">
-        <img src="images/WD00.jpeg" alt="ウェディングフォトのイメージ">
+        <img src="images/WD4.jpeg" alt="ウェディングフォトのイメージ">
         <div class="hero-tag">Wedding Portrait / PhotoStudio TOI</div>
       </div>
     </div>
