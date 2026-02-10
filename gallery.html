@@ -358,10 +358,21 @@ main {
 
 .anniv-plan-btn:hover{ opacity:.9; }
 
-/* スマホは邪魔になりやすいので非表示（必要なら“下に回す”に変更可） */
+/* スマホは縦表示 */
 @media (max-width: 768px){
-  .anniv-side{ display:none; }
+  .anniv-wrap{
+    display: block;
+  }
+  .anniv-side{
+    display: block;
+    width: 100%;
+    margin-top: 14px;
+  }
+  .anniv-plan-btn{
+    width: 100%;
+  }
 }
+
 
   </style>
 </head>
