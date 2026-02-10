@@ -34,7 +34,34 @@
   display: block;
   object-fit: contain;
 }
-/* ===================================== */
+
+/* ===== Anniversary 共通：写真カードのサイズを揃える ===== */
+#anniv .thumb-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+#anniv .thumb-item{
+  height: 280px;              /* ←ここで揃える（シニアと同じ） */
+  background: #f3eee7;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+#anniv .thumb-item img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;          /* ←通常は切って見栄え優先 */
+}
+
+/* シニアだけは切らない（今の方針維持） */
+#anniv [data-sub-panel="senior"] .thumb-item.senior img{
+  object-fit: contain;
+}
+
+
 
 /* ===== Location（出張撮影）は人を切らない ===== */
 [data-main-panel="location"] .thumb-item {
@@ -360,19 +387,19 @@ main {
 
 /* スマホは縦表示 */
 @media (max-width: 768px){
-  .anniv-wrap{
-    display: block;
-  }
   .anniv-side{
-    display: block;
-    width: 100%;
-    margin-top: 14px;
+    display:block;
+    width:100%;
+    margin: 12px 0 16px; /* ←上下に余白を作る */
   }
+
   .anniv-plan-btn{
-    width: 100%;
+    width:100%;
+    padding: 14px 16px;       /* ←高さを少しだけ確保 */
+    line-height: 1.35;        /* ←詰まり感を減らす */
+    border-radius: 16px;
   }
 }
-
 
   </style>
 </head>
@@ -488,24 +515,14 @@ main {
     </div>
 
     <!-- Anniversaryパネル -->
-    <div id="anniv" data-main-panel="anniv" class="is-hidden">
-      <p class="gallery-lead">
-        七五三や成人式、入学・卒業、家族写真など。<br>
-        人生の節目の「今この瞬間」を、落ち着いた雰囲気の中で丁寧に残します。
-      </p>
+<div id="anniv" data-main-panel="anniv" class="is-hidden">
+  <p class="gallery-lead">
+    七五三や成人式、入学・卒業、家族写真など。<br>
+    人生の節目の「今この瞬間」を、落ち着いた雰囲気の中で丁寧に残します。
+  </p>
 
-      <div class="anniv-wrap">
-  <div class="anniv-main">
-    <!-- ここに既存の Anniversary コンテンツ（文章/写真/サブタブ等） -->
-  </div>
-
-  <aside class="anniv-side">
-    <a href="price.html#season-plan" class="anniv-plan-btn">
-      成人式・卒業式プラン<br>
-      <span>（季節プランはこちら）</span>
-    </a>
-  </aside>
-</div>
+  <div class="anniv-wrap">
+    <div class="anniv-main">
 
       <div class="tab-sub-row">
         <button class="tab-btn-sub is-active" data-sub-tab="753">七五三</button>
@@ -588,7 +605,18 @@ main {
           </div>
         </div>
       </div>
-    </div><!-- /#anniv -->
+
+    </div>
+
+    <aside class="anniv-side">
+      <a href="price.html#season-plan" class="anniv-plan-btn">
+        成人式・卒業式プラン<br>
+        <span>（季節プランはこちら）</span>
+      </a>
+    </aside>
+  </div><!-- /.anniv-wrap -->
+</div><!-- /#anniv -->
+
 
     <!-- Studioパネル -->
     <div id="studio" data-main-panel="studio" class="is-hidden">
