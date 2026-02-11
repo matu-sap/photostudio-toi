@@ -411,6 +411,22 @@ main {
     text-align:center;
   }
 
+   /* ★ここから追加：写真の重なり対策 */
+  #anniv .thumb-grid{
+    grid-template-columns: 1fr;  /* 2列 → 1列 */
+    gap: 14px;
+  }
+
+  #anniv .thumb-item{
+    height: auto;               /* 固定高さが悪さする場合に備えて解除 */
+    aspect-ratio: 3 / 2;        /* 見栄えを揃える（不要なら削除OK） */
+  }
+
+  #anniv .thumb-item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 
