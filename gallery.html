@@ -387,19 +387,32 @@ main {
 
 /* スマホは縦表示 */
 @media (max-width: 768px){
+
+  .anniv-wrap{
+    display:block;   /* ← これが一番重要 */
+  }
+
+  .anniv-main{
+    width:100%;
+  }
+
   .anniv-side{
     display:block;
     width:100%;
-    margin: 12px 0 16px; /* ←上下に余白を作る */
+    margin: 20px 0;
   }
 
   .anniv-plan-btn{
+    display:block;
     width:100%;
-    padding: 14px 16px;       /* ←高さを少しだけ確保 */
-    line-height: 1.35;        /* ←詰まり感を減らす */
-    border-radius: 16px;
+    padding: 16px;
+    line-height:1.4;
+    border-radius:16px;
+    text-align:center;
   }
+
 }
+
 
   </style>
 </head>
